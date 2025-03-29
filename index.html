@@ -1,1 +1,544 @@
-<p> Hii there I am faseed and i am updating website --- coming soon ---  <p/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copy DSA Codes</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: #00ff99;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    button {
+      background-color: #1f1f1f;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 15px;
+      min-height: 70px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .copied {
+      margin-top: 20px;
+      color: #4caf50;
+      opacity: 0;
+      transition: opacity 0.4s;
+      font-size: 16px;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    .download-btn {
+      margin-top: 15px;
+      background-color: #00ff99;
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vanakam Nanbarkaley 🚀</h1>
+
+  <div class="grid" id="buttons">
+    <!-- Buttons will be dynamically inserted -->
+  </div>
+
+  <button class="download-btn" onclick="downloadAll()">⬇️ Download All Codes</button>
+
+  <div id="copied" class="copied">✅ Copied to clipboard!</div>
+
+  <script>
+    const messages = [
+`#include <iostream>
+#include <stack>
+#include <cctype>
+using namespace std;
+
+string postfixToInfix(string postfix) {
+    stack<string> s;
+    for (char ch : postfix) {
+        if (isalnum(ch)) {
+            string op(1, ch);
+            s.push(op);
+        } else {
+            string operand2 = s.top(); s.pop();
+            string operand1 = s.top(); s.pop();
+            string newExpr = "(" + operand1 + ch + operand2 + ")";
+            s.push(newExpr);
+        }
+    }
+    return s.top();
+}
+
+int main() {
+    string postfix;
+    cout << "Postfix to Infix Converter\\n";
+    cout << "Enter Postfix Expression: ";
+    cin >> postfix;
+    string infix = postfixToInfix(postfix);
+    cout << "Infix Expression: " << infix << endl;
+    return 0;
+}
+`,
+`#include <iostream>
+using namespace std;
+
+#define SIZE 100
+
+class Queue {
+    int arr[SIZE];
+    int front, rear;
+public:
+    Queue() {
+        front = -1;
+        rear = -1;
+    }
+
+    void enqueue(int x) {
+        if (rear == SIZE - 1) {
+            cout << "Queue Overflow\\n";
+            return;
+        }
+        if (front == -1) front = 0;
+        arr[++rear] = x;
+        cout << x << " inserted\\n";
+    }
+
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            cout << "Queue Underflow\\n";
+            return;
+        }
+        cout << arr[front++] << " removed\\n";
+    }
+
+    void display() {
+        if (front == -1 || front > rear) {
+            cout << "Queue is Empty\\n";
+            return;
+        }
+        cout << "Queue: ";
+        for (int i = front; i <= rear; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void pop() {
+        dequeue();
+    }
+};
+
+int main() {
+    Queue q;
+    int choice, value;
+    while (true) {
+        cout << "\\n1. Enqueue\\n2. Dequeue\\n3. Display\\n4. Pop\\n5. Exit\\nEnter choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                q.enqueue(value);
+                break;
+            case 2:
+                q.dequeue();
+                break;
+            case 3:
+                q.display();
+                break;
+            case 4:
+                q.pop();
+                break;
+            case 5:
+                exit(0);
+            default:
+                cout << "Invalid Choice\\n";
+        }
+    }
+}
+`,
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class LinkedList {
+    Node* head;
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+
+    void insert(int value) {
+        Node* temp = new Node;
+        temp->data = value;
+        temp->next = nullptr;
+        if (head == nullptr) {
+            head = temp;
+        } else {
+            Node* p = head;
+            while (p->next != nullptr) {
+                p = p->next;
+            }
+            p->next = temp;
+        }
+        cout << value << " inserted\n";
+    }
+
+    void deleteFront() {
+        if (head == nullptr) {
+            cout << "List Empty\n";
+            return;
+        }
+        Node* temp = head;
+        cout << head->data << " removed\n";
+        head = head->next;
+        delete temp;
+    }
+
+    void display() {
+        if (head == nullptr) {
+            cout << "List Empty\n";
+            return;
+        }
+        Node* p = head;
+        cout << "List: ";
+        while (p != nullptr) {
+            cout << p->data << " ";
+            p = p->next;
+        }
+        cout << endl;
+    }
+
+    void pop() {
+        deleteFront();
+    }
+};
+
+int main() {
+    LinkedList list;
+    int choice, value;
+    while (true) {
+        cout << "\n1. Insert\n2. Delete\n3. Display\n4. Pop\n5. Exit\nEnter choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                list.insert(value);
+                break;
+            case 2:
+                list.deleteFront();
+                break;
+            case 3:
+                list.display();
+                break;
+            case 4:
+                list.pop();
+                break;
+            case 5:
+                exit(0);
+            default:
+                cout << "Invalid Choice\n";
+        }
+    }
+}
+`,
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class CircularLinkedList {
+    Node* last;
+public:
+    CircularLinkedList() {
+        last = nullptr;
+    }
+
+    void insert(int value) {
+        Node* temp = new Node;
+        temp->data = value;
+        if (last == nullptr) {
+            temp->next = temp;
+            last = temp;
+        } else {
+            temp->next = last->next;
+            last->next = temp;
+            last = temp;
+        }
+        cout << value << " inserted\n";
+    }
+
+    void deleteFront() {
+        if (last == nullptr) {
+            cout << "List Empty\n";
+            return;
+        }
+        Node* temp = last->next;
+        if (last == last->next) {
+            cout << temp->data << " removed\n";
+            delete temp;
+            last = nullptr;
+        } else {
+            cout << temp->data << " removed\n";
+            last->next = temp->next;
+            delete temp;
+        }
+    }
+
+    void display() {
+        if (last == nullptr) {
+            cout << "List Empty\n";
+            return;
+        }
+        Node* p = last->next;
+        cout << "List: ";
+        do {
+            cout << p->data << " ";
+            p = p->next;
+        } while (p != last->next);
+        cout << endl;
+    }
+
+    void pop() {
+        deleteFront();
+    }
+};
+
+int main() {
+    CircularLinkedList cll;
+    int choice, value;
+    while (true) {
+        cout << "\n1. Insert\n2. Delete\n3. Display\n4. Pop\n5. Exit\nEnter choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                cll.insert(value);
+                break;
+            case 2:
+                cll.deleteFront();
+                break;
+            case 3:
+                cll.display();
+                break;
+            case 4:
+                cll.pop();
+                break;
+            case 5:
+                exit(0);
+            default:
+                cout << "Invalid Choice\n";
+        }
+    }
+}
+`,
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+    Node(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+void inorder(Node* root) {
+    if (root == nullptr) return;
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
+void preorder(Node* root) {
+    if (root == nullptr) return;
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Node* root) {
+    if (root == nullptr) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+
+int main() {
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+
+    cout << "Inorder: ";
+    inorder(root);
+    cout << endl;
+
+    cout << "Preorder: ";
+    preorder(root);
+    cout << endl;
+
+    cout << "Postorder: ";
+    postorder(root);
+    cout << endl;
+
+    return 0;
+}
+`,
+`#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+    Node(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+Node* insert(Node* root, int value) {
+    if (root == nullptr) return new Node(value);
+    if (value < root->data)
+        root->left = insert(root->left, value);
+    else
+        root->right = insert(root->right, value);
+    return root;
+}
+
+bool search(Node* root, int key) {
+    if (root == nullptr) return false;
+    if (root->data == key) return true;
+    if (key < root->data)
+        return search(root->left, key);
+    else
+        return search(root->right, key);
+}
+
+int main() {
+    Node* root = nullptr;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 70);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 60);
+    insert(root, 80);
+
+    int key = 40;
+    if (search(root, key))
+        cout << key << " found\n";
+    else
+        cout << key << " not found\n";
+
+    key = 90;
+    if (search(root, key))
+        cout << key << " found\n";
+    else
+        cout << key << " not found\n";
+
+    return 0;
+}
+`
+    ];
+
+    const buttonLabels = [
+      "Postfix to Infix",
+      "Queue Implementation",
+      "Single Linked List",
+      "Circular Linked List",
+      "Binary Tree Traversal",
+      "Binary Search Tree"
+    ];
+
+    const grid = document.getElementById('buttons');
+
+    buttonLabels.forEach((label, index) => {
+      const btn = document.createElement('button');
+      btn.textContent = label;
+      btn.onclick = () => copyMessage(index);
+      grid.appendChild(btn);
+    });
+
+    function copyMessage(index) {
+      navigator.clipboard.writeText(messages[index]).then(() => {
+        const copied = document.getElementById('copied');
+        copied.classList.add('show');
+        setTimeout(() => {
+          copied.classList.remove('show');
+        }, 1200);
+        playSound();
+      });
+    }
+
+    function downloadAll() {
+      const zipContent = messages.map((msg, i) => `File ${i + 1}:\\n\\n${msg}\\n\\n`).join('\\n--------------------------------\\n');
+      const blob = new Blob([zipContent], { type: "text/plain" });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = "DSA_Codes_Collection.txt";
+      link.click();
+    }
+
+    function playSound() {
+      const beep = new Audio('https://www.myinstants.com/media/sounds/interface.mp3');
+      beep.play();
+    }
+  </script>
+
+</body>
+</html>
